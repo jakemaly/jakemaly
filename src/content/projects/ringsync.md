@@ -7,7 +7,7 @@ tech:
   - Design Iteration and Analysis
   - Technical Research
   - Project Management
-date: "2025-04-09"
+date: "2026-04-09"
 featured: true
 ---
 

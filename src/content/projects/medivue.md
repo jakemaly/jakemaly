@@ -12,7 +12,7 @@ tech:
   - Web Speech API
   - OpenAI Whisper
 image: "/projects/medivue/medivuelogo.png"
-date: "2025-03-15"
+date: "2026-03-15"
 featured: true
 ---
 
