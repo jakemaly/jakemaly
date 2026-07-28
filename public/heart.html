@@ -379,7 +379,12 @@
         if (!isPlaying || frameData.length === 0) return;
 
         const currentFrame = frameData[currentFrameIndex];
-        const duration = Math.max((currentFrame?.duration || 100) / playbackSpeed, 16);
+        let duration = Math.max((currentFrame?.duration || 100) / playbackSpeed, 16);
+
+        // Freeze on the last frame for 1 second before looping
+        if (isLooping && currentFrameIndex === frameData.length - 1) {
+          duration += 1000;
+        }
 
         animationTimeout = window.setTimeout(() => {
           animationTimeout = null;
