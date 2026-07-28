@@ -1,16 +1,5 @@
-# jake maly — portfolio
+# hi :)
 
-Personal portfolio site. Built with Astro and Tailwind CSS.
+i'm jake, a student & researcher @ u of t
 
-## Running locally
-
-```bash
-npm install
-npm run dev
-```
-
-## Building
-
-```bash
-npm run build
-```
+check out what i've built!
