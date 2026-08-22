@@ -170,7 +170,7 @@ const projects = [
 			const cards = grid?.querySelectorAll('.project-card');
 			if (!grid || !cards?.length) return;
 
-			const mobile = window.matchMedia('(max-width: 60ch)').matches;
+			const mobile = window.matchMedia('(max-width: 800px)').matches;
 			const gap = mobile
 				? 0
 				: parseFloat(getComputedStyle(document.documentElement).fontSize) * 3;

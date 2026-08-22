@@ -332,7 +332,7 @@
 		font-size: 0.85rem;
 	}
 
-	@media (max-width: 60ch) {
+	@media (max-width: 800px) {
 		.site-header__inner,
 		.terminal-hero {
 			align-items: flex-start;
