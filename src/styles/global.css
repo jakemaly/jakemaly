@@ -1,87 +1,371 @@
-@import "tailwindcss";
+@layer base, utils, components, portfolio;
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+@import '@webtui/css';
+@import '@webtui/plugin-nf';
+@import '@webtui/plugin-declarative-layout';
+@import '@webtui/theme-nord';
 
-@theme {
-	--color-bg: var(--bg);
-	--color-bg-muted: var(--bg-muted);
-	--color-text: var(--text);
-	--color-text-muted: var(--text-muted);
-	--color-border: var(--border);
-	--color-accent: var(--accent);
-	--color-header: var(--header);
-	--color-accent-dim: var(--accent-dim);
-	--color-accent-faint: var(--accent-faint);
-
-	--font-heading: 'Lora', Georgia, serif;
-	--font-body: 'Switzer', system-ui, -apple-system, sans-serif;
-}
-
-:root {
-	--bg: #252526;
-	--bg-muted: #36363a;
-	--text: #e8e8e8;
-	--text-muted: #9a9a9e;
-	--border: #404044;
-	--accent: rgba(210, 10, 46, 0.4);
-	--accent-dim: rgba(210, 10, 46, 0.3);
-	--accent-faint: rgba(210, 10, 46, 0.15);
-	--header: #EADDCA;
-}
-
-[data-theme="dark"] {
-	--bg: #060a06;
-	--bg-muted: #0c140c;
-	--text: #e0e8e0;
-	--text-muted: #8a9a8a;
-	--border: #162016;
-	--accent: #3d6b4f;
-	--accent-dim: #2f5039;
-	--accent-faint: #203a28;
-}
-
-body {
-	font-family: var(--font-body);
-	background-color: var(--bg);
-	color: var(--text);
-	background-image:
-		/* fine grid — 20px squares */
-		linear-gradient(to right, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-		linear-gradient(to bottom, rgba(255, 255, 255, 0.01) 1px, transparent 1px),
-		/* major grid — every 5 squares (100px), slightly more defined */
-		linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-		linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-	background-size:
-		20px 20px,
-		20px 20px,
-		100px 100px,
-		100px 100px;
-}
-
-::selection {
-	background-color: var(--accent-dim);
-	color: var(--bg);
-}
-
-a {
-	color: var(--text);
-	text-decoration: none;
-}
-
-a:hover {
-	color: var(--accent);
-}
-
-@keyframes blink {
-	0%,
-	100% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0;
+@layer base {
+	:root {
+		--font-family: Menlo, Monaco, monospace, 'Symbols Nerd Font';
 	}
 }
 
-.animate-blink {
-	animation: blink 1s step-end infinite;
+@layer portfolio {
+	:root {
+		--font-size: 16px;
+		--line-height: 1.4;
+		--background0: #202124;
+		--background1: #2b2d30;
+		--background2: #45484d;
+		--background3: #686c72;
+		--foreground0: #f1eee7;
+		--foreground1: #d2cec5;
+		--foreground2: #9b9a96;
+		--box-border-color: var(--background3);
+		--portfolio-accent: #bf616a;
+		--portfolio-accent-strong: #8f3f4a;
+		--portfolio-warm: #e2c07b;
+		--portfolio-alert: #7b303b;
+	}
+
+	body {
+		min-width: 320px;
+		word-break: normal;
+		overflow-wrap: break-word;
+	}
+
+	::selection {
+		background: var(--portfolio-alert);
+		color: var(--nord0);
+	}
+
+	a {
+		color: inherit;
+	}
+
+	.site-header {
+		border-bottom: 1px solid var(--background2);
+		padding: 0.5lh 2ch;
+	}
+
+	.site-header__inner {
+		width: min(100%, 88ch);
+		margin-inline: auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2ch;
+	}
+
+	.site-header nav,
+	.hero-actions,
+	.contact-links,
+	.project-tags {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1ch;
+	}
+
+	.site-header nav a {
+		color: var(--foreground2);
+		text-decoration: none;
+	}
+
+	.site-header nav a:hover,
+	.site-header nav a:focus-visible,
+	.site-logo:hover,
+	.site-logo:focus-visible {
+		color: var(--portfolio-accent);
+		text-decoration: underline;
+	}
+
+	.site-logo {
+		font-weight: var(--font-weight-bold);
+		text-decoration: none;
+		white-space: nowrap;
+	}
+
+	.site-logo span {
+		color: var(--portfolio-accent);
+	}
+
+	.portfolio-shell {
+		width: min(100% - 4ch, 88ch);
+		margin-inline: auto;
+		padding-block: 1lh 3lh;
+	}
+
+	.terminal-page {
+		display: grid;
+		min-height: min(54vh, 30lh);
+		place-items: center;
+	}
+
+	.terminal-hero {
+		width: min(100%, 72ch);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 4ch;
+	}
+
+	.terminal-hero h1 {
+		color: var(--foreground0);
+		font-size: clamp(2.5rem, 10vw, 6rem);
+		line-height: 1;
+		margin-block: 0.25lh;
+	}
+
+	.terminal-prompt {
+		color: var(--foreground2);
+	}
+
+	.terminal-subtext {
+		color: var(--foreground1);
+		font-size: 1.15rem;
+	}
+
+	.hero-actions {
+		margin-top: 1lh;
+	}
+
+	.portfolio-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 2lh;
+		padding: 0 2ch;
+		border: 1px solid var(--portfolio-accent);
+		background: transparent;
+		color: var(--portfolio-accent);
+		font: inherit;
+		line-height: 1;
+		text-decoration: none;
+		white-space: nowrap;
+		gap: 1ch;
+	}
+
+	.nf-icon {
+		font-family: 'Symbols Nerd Font';
+	}
+
+	.portfolio-button:hover,
+	.portfolio-button:focus-visible {
+		background: var(--portfolio-accent);
+		color: var(--background0);
+		text-decoration: none;
+	}
+
+	.portfolio-button--primary {
+		background: var(--portfolio-accent);
+		color: var(--background0);
+	}
+
+	.portfolio-button--warm {
+		border-color: var(--portfolio-warm);
+		color: var(--portfolio-warm);
+	}
+
+	.portfolio-button--warm:hover,
+	.portfolio-button--warm:focus-visible {
+		background: var(--portfolio-warm);
+		color: var(--background0);
+	}
+
+	.portfolio-section,
+	.contact-section {
+		padding-block: 3lh;
+	}
+
+	.about-experience-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2lh;
+		align-items: start;
+	}
+
+	.section-kicker {
+		color: var(--portfolio-accent-strong);
+		font-size: 0.85rem;
+		margin-bottom: 0.5lh;
+	}
+
+	h2 {
+		color: var(--foreground0);
+		font-size: clamp(1.35rem, 3vw, 2rem);
+		margin-bottom: 1lh;
+	}
+
+	.experience-list {
+		display: grid;
+		gap: 1lh;
+	}
+
+	.experience-entry {
+		padding-bottom: 1lh;
+		border-bottom: 1px solid var(--background2);
+	}
+
+	.experience-clients {
+		display: grid;
+		gap: 1lh;
+	}
+
+	.experience-client + .experience-client {
+		padding-top: 1lh;
+		border-top: 1px dashed var(--background2);
+	}
+
+	.experience-date,
+	.experience-meta,
+	.project-index {
+		color: var(--foreground2);
+		font-size: 0.9rem;
+	}
+
+	.experience-meta-row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 2ch;
+		margin-bottom: 0.5lh;
+	}
+
+	.experience-date {
+		flex: 0 0 auto;
+		text-align: right;
+	}
+
+	.experience-entry h3,
+	.project-card h3 {
+		color: var(--portfolio-accent);
+		margin-bottom: 0.5lh;
+	}
+
+	.experience-meta {
+		min-width: 0;
+	}
+
+	.project-grid {
+		position: relative;
+	}
+
+	.project-card {
+		--box-border-color: var(--background3);
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: calc((100% - 3ch) / 2);
+		margin: 0;
+	}
+
+	.project-media {
+		display: block;
+		aspect-ratio: 16 / 9;
+		margin-inline: 1ch;
+		width: calc(100% - 2ch);
+		background: var(--background1);
+		overflow: hidden;
+	}
+
+	.project-media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		transition: opacity 150ms ease;
+	}
+
+	.project-media:hover img,
+	.project-media:focus-visible img {
+		opacity: 0.75;
+	}
+
+	.project-card__body {
+		padding: 0.5lh 1ch 0;
+	}
+
+	.project-title-row {
+		display: flex;
+		justify-content: space-between;
+		gap: 2ch;
+	}
+
+	.project-card__body > p {
+		margin-bottom: 1lh;
+	}
+
+	.project-tags {
+		margin-bottom: 1lh;
+	}
+
+	.project-link {
+		display: inline-flex;
+		gap: 1ch;
+		color: var(--portfolio-accent);
+		text-decoration: underline;
+	}
+
+	.contact-section {
+		border-top: 1px solid var(--background2);
+	}
+
+	.contact-intro {
+		margin-bottom: 2lh;
+	}
+
+	.contact-links {
+		margin-bottom: 2lh;
+	}
+
+	.terminal-prompt--ready {
+		color: var(--portfolio-warm);
+	}
+
+	.site-footer {
+		border-top: 1px solid var(--background2);
+		color: var(--foreground2);
+		padding: 2lh 2ch;
+		text-align: center;
+		font-size: 0.85rem;
+	}
+
+	@media (max-width: 60ch) {
+		.site-header__inner,
+		.terminal-hero {
+			align-items: flex-start;
+			flex-direction: column;
+		}
+
+		.site-header__inner {
+			gap: 1lh;
+		}
+
+		.terminal-hero {
+			gap: 1lh;
+		}
+
+		.about-experience-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.project-card {
+			width: 100%;
+		}
+
+
+		.experience-entry {
+			padding-bottom: 1lh;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		*,
+		*::before,
+		*::after {
+			transition-duration: 0.01ms !important;
+		}
+	}
 }

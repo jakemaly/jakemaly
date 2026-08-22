@@ -1,17 +1,9 @@
 ---
 import '../styles/global.css';
-
-const { currentPath } = Astro.props;
-
-const navItems = [
-	{ label: 'home', href: '/' },
-	{ label: 'projects', href: '/work' },
-	{ label: 'contact', href: '/contact' },
-];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-webtui-theme="nord">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,59 +11,8 @@ const navItems = [
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Jake Maly</title>
-
-		<!-- Lora (Google Fonts) -->
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-		<link
-			href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;1,500&display=swap"
-			rel="stylesheet"
-		/>
-
-		<!-- Switzer (Fontshare CDN) -->
-		<link
-			rel="preload"
-			href="https://api.fontshare.com/v2/families/sW90rN?formats=woff2"
-			as="fetch"
-			crossorigin="anonymous"
-		/>
-		<link
-			href="https://api.fontshare.com/v2/css?families=sW90rN&display=swap"
-			rel="stylesheet"
-		/>
 	</head>
 	<body>
-		<header class="border-b border-header/20 bg-header/5">
-			<div class="max-w-3xl mx-auto px-6 py-3 flex items-center gap-3 text-sm">
-				<span class="text-text-muted select-none">$ cd</span>
-				{navItems.map((item, i) => (
-					<>
-						<a
-							href={item.href}
-							class={`transition-colors ${
-								currentPath === item.href
-									? 'text-text font-medium hover:text-accent'
-									: 'text-text-muted hover:text-text'
-							}`}
-						>
-							{item.label}
-						{currentPath === item.href && <span class="inline-block w-[2px] h-[0.9em] ml-[1px] align-middle bg-current animate-blink"></span>}
-					</a>
-						{i < navItems.length - 1 && <span class="text-text-muted select-none">│</span>}
-					</>
-				))}
-			</div>
-		</header>
-
-		<main class="max-w-3xl mx-auto px-6 py-12">
-			<slot />
-		</main>
-
-		<footer class="border-t border-header/20 bg-header/5">
-			<div class="max-w-3xl mx-auto px-6 py-6 text-xs text-text-muted">
-				<p>© {new Date().getFullYear()} jake maly</p>
-				<p class="mt-1">built with caffeine, curiosity &amp; &lt;3</p>
-			</div>
-		</footer>
+		<slot />
 	</body>
 </html>
