@@ -208,6 +208,16 @@
 		border-bottom: 1px solid var(--background2);
 	}
 
+	.experience-clients {
+		display: grid;
+		gap: 1lh;
+	}
+
+	.experience-client + .experience-client {
+		padding-top: 1lh;
+		border-top: 1px dashed var(--background2);
+	}
+
 	.experience-date,
 	.experience-meta,
 	.project-index {
@@ -215,8 +225,17 @@
 		font-size: 0.9rem;
 	}
 
+	.experience-meta-row {
+		display: flex;
+		align-items: baseline;
+		justify-content: space-between;
+		gap: 2ch;
+		margin-bottom: 0.5lh;
+	}
+
 	.experience-date {
-		margin-bottom: 0.25lh;
+		flex: 0 0 auto;
+		text-align: right;
 	}
 
 	.experience-entry h3,
@@ -226,21 +245,20 @@
 	}
 
 	.experience-meta {
-		margin-bottom: 0.5lh;
+		min-width: 0;
 	}
 
 	.project-grid {
-		column-count: 2;
-		column-gap: 3ch;
+		position: relative;
 	}
 
 	.project-card {
 		--box-border-color: var(--background3);
-		display: inline-block;
-		width: 100%;
-		margin-bottom: 2lh;
-		break-inside: avoid;
-		vertical-align: top;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: calc((100% - 3ch) / 2);
+		margin: 0;
 	}
 
 	.project-media {
@@ -333,9 +351,10 @@
 			grid-template-columns: 1fr;
 		}
 
-		.project-grid {
-			column-count: 1;
+		.project-card {
+			width: 100%;
 		}
+
 
 		.experience-entry {
 			padding-bottom: 1lh;

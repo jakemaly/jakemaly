@@ -3,18 +3,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const experiences = [
 	{
-		date: '2025—present',
-		role: 'Agentic AI Research Assistant',
-		organization: 'Dynamic Optimization & RL Lab',
+		date: 'May 2026 – Aug. 2026',
+		role: 'Agentic AI Research Engineer',
+		organization: 'University of Toronto',
 		location: 'Toronto, ON',
-		description: 'Improving LLM evaluation for legal judgement.'
+		description: 'Built a multi-agent legal judgment prediction pipeline with hybrid RAG, optimized prompts, and an evaluation dashboard, raising accuracy from 40% to 67%.'
 	},
 	{
-		date: '2023—present',
-		role: 'Engineering & Artificial Intelligence',
-		organization: 'University of Toronto',
-		location: 'St. George campus',
-		description: 'Learning, building, and researching at the intersection of software and AI.'
+		role: 'Software Engineer, Freelance',
+		clients: [
+			{
+				date: 'May 2026 – Jul. 2026',
+				organization: 'EduTutor',
+				description: 'Built quiz-authoring and delivery workflows with React, FastAPI, SQLAlchemy, and PostgreSQL, including publishing, grading, and document export.'
+			},
+			{
+				date: 'Feb. 2026 – Apr. 2026',
+				organization: 'Blue Marble Academy',
+				description: 'Built React, FastAPI, and Azure Cosmos DB features for authenticated artifact sharing and cloning across six artifact types, while resolving production bugs.'
+			},
+			{
+				date: 'Jan. 2026 – Mar. 2026',
+				organization: 'Applied Optimal',
+				description: 'Implemented role-based access control across Flutter and FastAPI with Dio interceptors and Supabase JWT authentication for a multi-tenant application.'
+			},
+			{
+				date: 'Nov. 2025 – Jan. 2026',
+				organization: 'Reframe Marketing',
+				description: 'Architected a multi-provider LLM pipeline with vision document extraction and reporting, reducing analysis time from over two hours to under three minutes.'
+			}
+		]
 	}
 ];
 
@@ -26,27 +44,19 @@ const projects = [
 		href: 'https://github.com/jakemaly/forwardpass',
 	},
 	{
-		title: 'project demo',
-		description: 'A visual home for the things I build for fun.',
-		tags: ['design', 'software'],
-		href: '#',
+		title: 'socratic',
+		description: 'Alignment & LoRA fine-tuning for education. Trained Qwen2.5-7B to evaluate a Socratic coding tutor.',
+		tags: ['peft / lora', 'ml', 'evals'],
+		href: 'https://github.com/jakemaly/socratic',
 		media: '/project-placeholder.svg',
 		mediaAlt: 'Abstract project placeholder'
 	},
 	{
-		title: 'signal garden',
-		description: 'A longer project description to test how a card handles more context, multiple lines, and a slower reading rhythm.',
-		tags: ['web', 'interaction', 'prototype'],
-		href: '#'
+		title: 'mementos',
+		description: 'Agentic deep research and knowledge base. Visual representation of LightRAG.',
+		tags: ['rag', 'graph', 'agents', 'touchdesigner'],
+		href: 'https://github.com/jakemaly/mementos'
 	},
-	{
-		title: 'medivue',
-		description: 'Making complex information easier to see.',
-		tags: ['health', 'data', 'frontend', 'team'],
-		href: '#',
-		media: '/project-placeholder.svg',
-		mediaAlt: 'Abstract project placeholder'
-	}
 ];
 ---
 
@@ -56,7 +66,7 @@ const projects = [
 			<a href="#home" class="site-logo">jake<span>@</span>maly</a>
 			<nav aria-label="Primary navigation">
 				<a href="#projects">projects</a>
-				<a href="#about">about</a>
+				<a href="#experience">experience</a>
 			</nav>
 		</div>
 	</header>
@@ -72,6 +82,7 @@ const projects = [
 						<a href="#projects" class="portfolio-button portfolio-button--primary">view work</a>
 						<a href="mailto:jake@mail.utoronto.ca" class="portfolio-button portfolio-button--outline"><span class="nf-icon" aria-hidden="true">&#xf0e0;</span> email me</a>
 						<a href="https://github.com/jakemaly" class="portfolio-button portfolio-button--outline"><span class="nf-icon" aria-hidden="true">&#xf09b;</span> github ↗</a>
+						<a href="https://www.linkedin.com/in/jakemaly/" class="portfolio-button portfolio-button--outline"><span class="nf-icon" aria-hidden="true">&#xf08c;</span> linkedin ↗</a>
 						<a href="https://jakemaly.github.io/resume/" class="portfolio-button portfolio-button--warm"><span class="nf-icon" aria-hidden="true">&#xf15c;</span> resume ↗</a>
 					</div>
 				</div>
@@ -82,7 +93,7 @@ const projects = [
 
 		<section id="projects" class="portfolio-section" aria-labelledby="projects-heading">
 			<p class="section-kicker">01 // projects</p>
-			<h2 id="projects-heading">things I've made</h2>
+			<h2 id="projects-heading">things i've made</h2>
 			<div class="project-grid">
 				{projects.map((project, index) => (
 					<article class="project-card" box-="square">
@@ -110,30 +121,80 @@ const projects = [
 			</div>
 		</section>
 
-		<section id="about" class="portfolio-section" aria-labelledby="about-heading">
-			<p class="section-kicker">02 // about</p>
-			<h2 id="about-heading">a curious person at a keyboard</h2>
+		<section id="experience" class="portfolio-section" aria-labelledby="experience-heading">
+			<p class="section-kicker">02 // experience</p>
+			<h2 id="experience-heading">where i've been</h2>
 			<div class="about-experience-grid">
+				<!-- Intro paragraph reserved for future use.
 				<p>
 					I'm a student and research assistant at the University of Toronto. I like making
 					software that feels clear, useful, and a little human — from AI research tools to
 					things built late at night for fun.
 				</p>
+				-->
 				<div class="experience-list">
 					{experiences.map((experience) => (
 						<article class="experience-entry">
-							<div>
-								<p class="experience-date">{experience.date}</p>
-								<h3>{experience.role}</h3>
-								<p class="experience-meta">{experience.organization} · {experience.location}</p>
-								<p>{experience.description}</p>
-							</div>
+							<h3>{experience.role}</h3>
+							{experience.clients ? (
+								<div class="experience-clients">
+									{experience.clients.map((client) => (
+										<div class="experience-client">
+											<div class="experience-meta-row">
+												<p class="experience-meta">{client.organization}</p>
+												<p class="experience-date">{client.date}</p>
+											</div>
+											<p>{client.description}</p>
+										</div>
+									))}
+								</div>
+							) : (
+								<>
+									<div class="experience-meta-row">
+										<p class="experience-meta">{experience.organization} · {experience.location}</p>
+										<p class="experience-date">{experience.date}</p>
+									</div>
+									<p>{experience.description}</p>
+								</>
+							)}
 						</article>
 					))}
 				</div>
 			</div>
 		</section>
 	</main>
+
+	<script>
+		const layoutProjects = () => {
+			const grid = document.querySelector('.project-grid');
+			const cards = grid?.querySelectorAll('.project-card');
+			if (!grid || !cards?.length) return;
+
+			const mobile = window.matchMedia('(max-width: 60ch)').matches;
+			const gap = mobile
+				? 0
+				: parseFloat(getComputedStyle(document.documentElement).fontSize) * 3;
+			const columns = mobile ? 1 : 2;
+			const columnHeights = Array(columns).fill(0);
+			const columnWidth = mobile
+				? grid.clientWidth
+				: (grid.clientWidth - gap) / 2;
+
+			cards.forEach((card) => {
+				card.style.width = `${columnWidth}px`;
+				const column = columnHeights.indexOf(Math.min(...columnHeights));
+				card.style.left = `${column * (columnWidth + gap)}px`;
+				card.style.top = `${columnHeights[column]}px`;
+				columnHeights[column] += card.getBoundingClientRect().height + gap;
+			});
+
+			grid.style.height = `${Math.max(...columnHeights) - gap}px`;
+		};
+
+		window.addEventListener('resize', layoutProjects);
+		window.addEventListener('load', layoutProjects);
+		layoutProjects();
+	</script>
 
 	<footer class="site-footer">
 		<p>© {new Date().getFullYear()} jake maly · built with curiosity &amp; caffeine</p>
