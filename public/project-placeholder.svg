@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Abstract project placeholder</title>
+  <desc id="desc">A colorful abstract placeholder image for the project gallery.</desc>
+  <rect width="1200" height="800" fill="#36363a"/>
+  <circle cx="360" cy="330" r="220" fill="#d20a2e" fill-opacity=".65"/>
+  <circle cx="740" cy="430" r="280" fill="#3d6b4f" fill-opacity=".8"/>
+  <path d="M0 680 Q280 500 540 650 T1200 570 V800 H0Z" fill="#eaddca" fill-opacity=".18"/>
+  <path d="M110 120 L1080 680" stroke="#e8e8e8" stroke-opacity=".35" stroke-width="3"/>
+</svg>
