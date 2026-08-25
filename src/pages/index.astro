@@ -42,6 +42,8 @@ const projects = [
 		description: 'Local AI server from my bedroom. Serving Qwen3.8-27B MTP Q4_K_M on an RTX 3090 through llama.cpp.',
 		tags: ['ai', 'inference', 'quantization', 'local'],
 		href: 'https://github.com/jakemaly/forwardpass',
+		media: '/IMG_1856.jpg',
+		mediaAlt: 'Forwardpass local AI server setup'
 	},
 	{
 		title: 'socratic',
@@ -65,8 +67,9 @@ const projects = [
 		<div class="site-header__inner">
 			<a href="#home" class="site-logo">jake<span>@</span>maly</a>
 			<nav aria-label="Primary navigation">
+				<a href="#about">readme</a>
 				<a href="#projects">projects</a>
-				<a href="#experience">experience</a>
+				<a href="#experience">experience.log</a>
 			</nav>
 		</div>
 	</header>
@@ -89,14 +92,38 @@ const projects = [
 			</div>
 		</section>
 
-		<div is-="separator" direction-="horizontal" variant-="foreground2"></div>
+		<div class="portfolio-divider portfolio-divider--solid" aria-hidden="true"></div>
+
+		<section id="about" class="portfolio-section about-section" aria-labelledby="about-heading">
+			<div class="section-intro">
+				<p class="section-kicker">00 // readme</p>
+				<h2 id="about-heading">hi, i'm jake</h2>
+			</div>
+			<div class="about-panel">
+				<p class="about-copy">I'm a student, research assistant, hobbyist designer, and tech enthusiast. I enjoyed playing Minecraft as a kid, and it got me hooked on computers and building things.</p>
+				<p class="about-copy">Some facts about me:</p>
+				<ul class="about-facts">
+					<li>My favorite pieces of media are <em>Death Note</em>, <em>Into the Spider-Verse</em>, and <em>The Office</em>.</li>
+					<li>I really like kiwis, cherries, and mangoes.</li>
+					<li>Caffeine &amp; sunlight bring me incredible amounts of joy.</li>
+				</ul>
+				<p class="about-signoff">Excited to meet you!</p>
+			</div>
+			<div class="about-gallery" aria-label="A few images from Jake's archive">
+				<img src="/IMG_2764.jpg" alt="Personal photo from Jake's archive" loading="lazy" />
+				<img src="/IMG_1778.jpg" alt="Personal photo from Jake's archive" loading="lazy" />
+				<img src="/IMG_2393.jpg" alt="Personal photo from Jake's archive" loading="lazy" />
+			</div>
+		</section>
+
+		<div class="portfolio-divider portfolio-divider--dashed" aria-hidden="true"></div>
 
 		<section id="projects" class="portfolio-section" aria-labelledby="projects-heading">
 			<p class="section-kicker">01 // projects</p>
 			<h2 id="projects-heading">things i've made</h2>
 			<div class="project-grid">
 				{projects.map((project, index) => (
-					<article class="project-card" box-="square">
+					<article class:list={['project-card', index === 0 && 'project-card--lead']} box-="square">
 						{project.media && (
 							<a href={project.href} class="project-media">
 								<img src={project.media} alt={project.mediaAlt} loading="lazy" />
@@ -109,7 +136,7 @@ const projects = [
 							</div>
 							<p>{project.description}</p>
 							<div class="project-tags">
-								{project.tags.map((tag) => <span is-="badge" variant-="nord11" cap-="round">{tag}</span>)}
+								{project.tags.map((tag) => <span is-="badge" variant-="nord9" cap-="round">{tag}</span>)}
 							</div>
 							<a class="project-link" href={project.href}>
 								{project.href.includes('github.com') && <span class="nf-icon" aria-hidden="true">&#xf09b;</span>}
@@ -121,9 +148,14 @@ const projects = [
 			</div>
 		</section>
 
+		<div class="portfolio-divider portfolio-divider--offset" aria-hidden="true"></div>
+
 		<section id="experience" class="portfolio-section" aria-labelledby="experience-heading">
-			<p class="section-kicker">02 // experience</p>
-			<h2 id="experience-heading">where i've been</h2>
+			<p class="section-kicker">02 // experience.log</p>
+			<div class="section-heading-row">
+				<h2 id="experience-heading">where i've been</h2>
+				<span class="section-aside">tail -f /career.log</span>
+			</div>
 			<div class="about-experience-grid">
 				<!-- Intro paragraph reserved for future use.
 				<p>
