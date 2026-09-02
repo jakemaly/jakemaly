@@ -539,6 +539,11 @@
 		text-decoration: underline;
 	}
 
+	.project-link--status {
+		color: var(--portfolio-warm);
+		text-decoration: none;
+	}
+
 	.contact-section {
 		border-top: 1px solid var(--background2);
 	}

@@ -59,6 +59,13 @@ const projects = [
 		tags: ['rag', 'graph', 'agents', 'touchdesigner'],
 		href: 'https://github.com/jakemaly/mementos'
 	},
+	{
+		title: 'o12prep',
+		description: 'Designing software for university admissions practice.',
+		tags: ['fullstack', 'startup'],
+		href: '',
+		status: 'Releasing September 2026'
+	},
 ];
 ---
 
@@ -138,10 +145,14 @@ const projects = [
 							<div class="project-tags">
 								{project.tags.map((tag) => <span is-="badge" variant-="nord9" cap-="round">{tag}</span>)}
 							</div>
-							<a class="project-link" href={project.href}>
-								{project.href.includes('github.com') && <span class="nf-icon" aria-hidden="true">&#xf09b;</span>}
-								open project →
-							</a>
+							{project.status ? (
+								<span class="project-link project-link--status">{project.status}</span>
+							) : (
+								<a class="project-link" href={project.href}>
+									{project.href.includes('github.com') && <span class="nf-icon" aria-hidden="true">&#xf09b;</span>}
+									open project →
+								</a>
+							)}
 						</div>
 					</article>
 				))}
