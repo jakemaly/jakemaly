@@ -504,6 +504,11 @@
 		transition: opacity 150ms ease;
 	}
 
+	.project-card:nth-child(2) .project-media img {
+		object-fit: cover;
+		padding: 0;
+	}
+
 	.project-media:hover img,
 	.project-media:focus-visible img {
 		opacity: 0.75;
