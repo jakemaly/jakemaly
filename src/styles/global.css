@@ -549,10 +549,10 @@
 	}
 
 	.contact-details {
+		box-sizing: border-box;
 		display: grid;
 		gap: 0.5lh;
-		width: fit-content;
-		max-width: 100%;
+		width: 100%;
 		margin: 0;
 		padding: 1lh 2ch;
 		border: 1px dashed var(--background3);
