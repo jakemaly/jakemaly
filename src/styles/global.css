@@ -1,9 +1,16 @@
 @layer base, utils, components, portfolio;
 
 @import '@webtui/css';
-@import '@webtui/plugin-nf';
 @import '@webtui/plugin-declarative-layout';
 @import '@webtui/theme-nord';
+
+@font-face {
+	font-family: 'Symbols Nerd Font';
+	src: url('/fonts/SymbolsNerdFont-Regular.woff2') format('woff2');
+	font-display: swap;
+	font-style: normal;
+	font-weight: 400;
+}
 
 @layer base {
 	:root {
