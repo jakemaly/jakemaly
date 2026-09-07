@@ -36,6 +36,11 @@ const experiences = [
 	}
 ];
 
+const externalLink = {
+	target: '_blank',
+	rel: 'noopener noreferrer'
+};
+
 const projects = [
 	{
 		title: 'forwardpass',
@@ -77,6 +82,7 @@ const projects = [
 				<a href="#about">readme</a>
 				<a href="#projects">projects</a>
 				<a href="#experience">experience.log</a>
+				<a href="#contact">contact</a>
 			</nav>
 		</div>
 	</header>
@@ -91,9 +97,9 @@ const projects = [
 					<div class="hero-actions">
 						<a href="#projects" class="portfolio-button portfolio-button--primary">view work</a>
 						<a href="mailto:jake@mail.utoronto.ca" class="portfolio-button portfolio-button--outline"><span class="nf-icon" aria-hidden="true">&#xf0e0;</span> email me</a>
-						<a href="https://github.com/jakemaly" class="portfolio-button portfolio-button--outline"><span class="nf-icon" aria-hidden="true">&#xf09b;</span> github ↗</a>
-						<a href="https://www.linkedin.com/in/jakemaly/" class="portfolio-button portfolio-button--outline"><span class="nf-icon" aria-hidden="true">&#xf08c;</span> linkedin ↗</a>
-						<a href="https://jakemaly.github.io/resume/" class="portfolio-button portfolio-button--warm"><span class="nf-icon" aria-hidden="true">&#xf15c;</span> resume ↗</a>
+						<a href="https://github.com/jakemaly" class="portfolio-button portfolio-button--outline" {...externalLink}><span class="nf-icon" aria-hidden="true">&#xf09b;</span> github ↗</a>
+						<a href="https://www.linkedin.com/in/jakemaly/" class="portfolio-button portfolio-button--outline" {...externalLink}><span class="nf-icon" aria-hidden="true">&#xf08c;</span> linkedin ↗</a>
+						<a href="https://jakemaly.github.io/resume/" class="portfolio-button portfolio-button--warm" {...externalLink}><span class="nf-icon" aria-hidden="true">&#xf15c;</span> resume ↗</a>
 					</div>
 				</div>
 			</div>
@@ -132,7 +138,7 @@ const projects = [
 				{projects.map((project, index) => (
 					<article class:list={['project-card', index === 0 && 'project-card--lead']} box-="square">
 						{project.media && (
-							<a href={project.href} class="project-media">
+							<a href={project.href} class="project-media" aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
 								<img src={project.media} alt={project.mediaAlt} loading="lazy" />
 							</a>
 						)}
@@ -148,7 +154,7 @@ const projects = [
 							{project.status ? (
 								<span class="project-link project-link--status">{project.status}</span>
 							) : (
-								<a class="project-link" href={project.href}>
+								<a class="project-link" href={project.href} aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
 									{project.href.includes('github.com') && <span class="nf-icon" aria-hidden="true">&#xf09b;</span>}
 									open project →
 								</a>
@@ -205,39 +211,18 @@ const projects = [
 				</div>
 			</div>
 		</section>
+		<section id="contact" class="portfolio-section contact-section" aria-labelledby="contact-heading">
+			<p class="section-kicker">03 // contact</p>
+			<h2 id="contact-heading">let's connect</h2>
+			<p class="contact-intro">If the email button does not open a mail app, copy this address into one:</p>
+			<p class="contact-address">jake@mail.utoronto.ca</p>
+			<div class="contact-links">
+				<a href="mailto:jake@mail.utoronto.ca" class="portfolio-button portfolio-button--outline"><span class="nf-icon" aria-hidden="true">&#xf0e0;</span> email me</a>
+				<a href="https://www.linkedin.com/in/jakemaly/" class="portfolio-button portfolio-button--outline" {...externalLink}><span class="nf-icon" aria-hidden="true">&#xf08c;</span> message on linkedin ↗</a>
+				<a href="https://github.com/jakemaly" class="portfolio-button portfolio-button--outline" {...externalLink}><span class="nf-icon" aria-hidden="true">&#xf09b;</span> github ↗</a>
+			</div>
+		</section>
 	</main>
-
-	<script>
-		const layoutProjects = () => {
-			const grid = document.querySelector('.project-grid');
-			const cards = grid?.querySelectorAll('.project-card');
-			if (!grid || !cards?.length) return;
-
-			const mobile = window.matchMedia('(max-width: 800px)').matches;
-			const gap = mobile
-				? 0
-				: parseFloat(getComputedStyle(document.documentElement).fontSize) * 3;
-			const columns = mobile ? 1 : 2;
-			const columnHeights = Array(columns).fill(0);
-			const columnWidth = mobile
-				? grid.clientWidth
-				: (grid.clientWidth - gap) / 2;
-
-			cards.forEach((card) => {
-				card.style.width = `${columnWidth}px`;
-				const column = columnHeights.indexOf(Math.min(...columnHeights));
-				card.style.left = `${column * (columnWidth + gap)}px`;
-				card.style.top = `${columnHeights[column]}px`;
-				columnHeights[column] += card.getBoundingClientRect().height + gap;
-			});
-
-			grid.style.height = `${Math.max(...columnHeights) - gap}px`;
-		};
-
-		window.addEventListener('resize', layoutProjects);
-		window.addEventListener('load', layoutProjects);
-		layoutProjects();
-	</script>
 
 	<footer class="site-footer">
 		<p>© {new Date().getFullYear()} jake maly · built with curiosity &amp; caffeine</p>

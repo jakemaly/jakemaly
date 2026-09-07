@@ -455,15 +455,14 @@
 	}
 
 	.project-grid {
-		position: relative;
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-items: start;
+		gap: 3rem;
 	}
 
 	.project-card {
 		--box-border-color: var(--background3);
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: calc((100% - 3ch) / 2);
 		margin: 0;
 		transition: border-color 150ms ease, transform 150ms ease;
 	}
@@ -556,6 +555,19 @@
 		margin-bottom: 2lh;
 	}
 
+	.contact-address {
+		width: fit-content;
+		max-width: 100%;
+		margin-bottom: 1lh;
+		padding: 0.5lh 1ch;
+		border: 1px dashed var(--background3);
+		background: var(--background1);
+		color: var(--foreground0);
+		font-family: inherit;
+		overflow-wrap: anywhere;
+		user-select: all;
+	}
+
 	.terminal-prompt--ready {
 		color: var(--portfolio-warm);
 	}
@@ -626,8 +638,9 @@
 			grid-row: auto;
 		}
 
-		.project-card {
-			width: 100%;
+		.project-grid {
+			grid-template-columns: 1fr;
+			gap: 1lh;
 		}
 
 
