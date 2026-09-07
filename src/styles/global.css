@@ -554,10 +554,6 @@
 		border-top: 1px solid var(--background2);
 	}
 
-	.contact-intro {
-		margin-bottom: 2lh;
-	}
-
 	.contact-details {
 		display: grid;
 		gap: 0.5lh;
