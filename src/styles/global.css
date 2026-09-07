@@ -472,7 +472,7 @@
 	.project-card {
 		--box-border-color: var(--background3);
 		margin: 0;
-		transition: border-color 150ms ease, transform 150ms ease;
+		transition: border-color 150ms ease;
 	}
 
 	#projects .section-kicker,
@@ -481,18 +481,10 @@
 		color: var(--portfolio-accent-strong);
 	}
 
-	#projects .project-card {
-		--box-border-color: var(--portfolio-accent-strong);
-	}
-
 	#projects .project-card:hover {
 		--box-border-color: var(--portfolio-accent-strong);
-		transform: translateY(-0.25lh);
 	}
 
-	.project-card--lead {
-		--box-border-color: var(--portfolio-accent-strong);
-	}
 
 	.project-media {
 		display: block;
@@ -508,7 +500,8 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: opacity 150ms ease;
+		filter: saturate(0.8);
+		transition: filter 150ms ease;
 	}
 
 	.project-card:nth-child(2) .project-media img {
@@ -516,9 +509,9 @@
 		padding: 0;
 	}
 
-	.project-media:hover img,
+	.project-card:hover .project-media img,
 	.project-media:focus-visible img {
-		opacity: 0.75;
+		filter: saturate(1);
 	}
 
 	.project-card__body {
