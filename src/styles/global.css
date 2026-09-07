@@ -290,11 +290,12 @@
 		filter: saturate(0.8);
 	}
 
-	.about-gallery img:first-child {
+	.about-gallery img:first-child,
+	.about-gallery img:last-child {
 		transform: translateX(-1ch);
 	}
 
-	.about-gallery img:last-child {
+	.about-gallery img:nth-child(2) {
 		transform: translateX(1ch);
 	}
 
@@ -636,6 +637,7 @@
 		}
 
 		.about-gallery img:first-child,
+		.about-gallery img:nth-child(2),
 		.about-gallery img:last-child {
 			transform: none;
 		}
