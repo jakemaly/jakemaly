@@ -513,6 +513,10 @@
 		object-fit: contain;
 	}
 
+	.project-media--light {
+		background: #fff;
+	}
+
 	.project-card:hover .project-media img,
 	.project-media:focus-visible img {
 		filter: saturate(1);
