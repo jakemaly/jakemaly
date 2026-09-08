@@ -69,7 +69,9 @@ const projects = [
 		description: 'A conceptual design for a multi-site wearable vitals monitor. R&D + Project Management among a 6-person team, adhering to client and management needs.',
 		tags: ['project management', 'design', 'engineering', 'healthtech'],
 		href: '',
-		status: 'Presented at APS112 Demo Day'
+		status: 'Presented at APS112 Demo Day',
+		media: '/projects/ringsync/rings.png',
+		mediaAlt: 'Ringsync wearable vitals monitor concept'
 	},
 	{
 		title: 'o12prep',
@@ -144,11 +146,15 @@ const projects = [
 			<div class="project-grid">
 				{projects.map((project, index) => (
 					<article class:list={['project-card', index === 0 && 'project-card--lead']} box-="square">
-						{project.media && (
+						{project.media && (project.href ? (
 							<a href={project.href} class="project-media" aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
 								<img src={project.media} alt={project.mediaAlt} loading="lazy" />
 							</a>
-						)}
+						) : (
+							<div class="project-media">
+								<img src={project.media} alt={project.mediaAlt} loading="lazy" />
+							</div>
+						))}
 						<div class="project-card__body">
 							<div class="project-title-row">
 								<h3>{project.title}</h3>
