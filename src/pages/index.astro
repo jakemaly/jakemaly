@@ -71,7 +71,8 @@ const projects = [
 		href: '',
 		status: 'Presented at APS112 Demo Day',
 		media: '/projects/ringsync/rings.png',
-		mediaAlt: 'Ringsync wearable vitals monitor concept'
+		mediaAlt: 'Ringsync wearable vitals monitor concept',
+		mediaClass: 'project-media--contain'
 	},
 	{
 		title: 'o12prep',
@@ -147,11 +148,11 @@ const projects = [
 				{projects.map((project, index) => (
 					<article class:list={['project-card', index === 0 && 'project-card--lead']} box-="square">
 						{project.media && (project.href ? (
-							<a href={project.href} class="project-media" aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
+							<a href={project.href} class:list={['project-media', project.mediaClass]} aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
 								<img src={project.media} alt={project.mediaAlt} loading="lazy" />
 							</a>
 						) : (
-							<div class="project-media">
+							<div class:list={['project-media', project.mediaClass]}>
 								<img src={project.media} alt={project.mediaAlt} loading="lazy" />
 							</div>
 						))}

@@ -509,6 +509,10 @@
 		padding: 0;
 	}
 
+	.project-media--contain img {
+		object-fit: contain;
+	}
+
 	.project-card:hover .project-media img,
 	.project-media:focus-visible img {
 		filter: saturate(1);
