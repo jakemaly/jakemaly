@@ -71,6 +71,12 @@ const projects = [
 		href: '',
 		status: 'Releasing September 2026'
 	},
+	{
+		title: 'ringsync (aps112)',
+		description: 'A conceptual design for a multi-site wearable vitals monitor. R&D + Project Management among a 6-person team, adhering to client and management needs; presented at APS112 Demo Day.',
+		tags: ['project management', 'design', 'engineering', 'healthtech'],
+		href: ''
+	},
 ];
 ---
 
@@ -151,14 +157,14 @@ const projects = [
 							<div class="project-tags">
 								{project.tags.map((tag) => <span is-="badge" variant-="nord9" cap-="round">{tag}</span>)}
 							</div>
-							{project.status ? (
-								<span class="project-link project-link--status">{project.status}</span>
-							) : (
+							{project.href ? (
 								<a class="project-link" href={project.href} aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
 									{project.href.includes('github.com') && <span class="nf-icon" aria-hidden="true">&#xf09b;</span>}
 									open project →
 								</a>
-							)}
+							) : project.status ? (
+								<span class="project-link project-link--status">{project.status}</span>
+							) : null}
 						</div>
 					</article>
 				))}
