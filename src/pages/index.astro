@@ -81,7 +81,8 @@ const projects = [
 		href: 'https://devpost.com/software/medivue',
 		media: '/projects/medivue/medivuelogo.png',
 		mediaAlt: 'Medivue logo',
-		mediaClass: 'project-media--contain project-media--light'
+		mediaClass: 'project-media--contain project-media--light',
+		linkLabel: 'view demo'
 	},
 	{
 		title: 'o12prep',
@@ -177,7 +178,7 @@ const projects = [
 							{project.href ? (
 								<a class="project-link" href={project.href} aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
 									{project.href.includes('github.com') && <span class="nf-icon" aria-hidden="true">&#xf09b;</span>}
-									open project →
+									{project.linkLabel || 'open project'} →
 								</a>
 							) : project.status ? (
 								<span class="project-link project-link--status">{project.status}</span>
