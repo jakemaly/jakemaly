@@ -62,7 +62,10 @@ const projects = [
 		title: 'mementos',
 		description: 'Agentic deep research and knowledge base. Visual representation of LightRAG.',
 		tags: ['rag', 'graph', 'agents', 'touchdesigner'],
-		href: 'https://github.com/jakemaly/mementos'
+		href: 'https://github.com/jakemaly/mementos',
+		media: '/projects/mementos/mementos-screen-recording.mp4',
+		mediaType: 'video',
+		mediaAlt: 'Mementos project screen recording'
 	},
 	{
 		title: 'ringsync',
@@ -157,7 +160,14 @@ const projects = [
 			<div class="project-grid">
 				{projects.map((project, index) => (
 					<article class:list={['project-card', index === 0 && 'project-card--lead']} box-="square">
-						{project.media && (project.href ? (
+						{project.media && (project.mediaType === 'video' ? (
+							<div class:list={['project-media', project.mediaClass]}>
+								<video controls preload="metadata" playsinline aria-label={project.mediaAlt}>
+									<source src={project.media} type="video/mp4" />
+									Your browser does not support the Mementos project recording.
+								</video>
+							</div>
+						) : project.href ? (
 							<a href={project.href} class:list={['project-media', project.mediaClass]} aria-label={`Open ${project.title} in a new tab`} {...externalLink}>
 								<img src={project.media} alt={project.mediaAlt} loading="lazy" />
 							</a>

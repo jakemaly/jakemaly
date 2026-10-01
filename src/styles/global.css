@@ -495,11 +495,15 @@
 		overflow: hidden;
 	}
 
-	.project-media img {
+	.project-media img,
+	.project-media video {
 		display: block;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	.project-media img {
 		filter: saturate(0.8);
 		transition: filter 150ms ease;
 	}
