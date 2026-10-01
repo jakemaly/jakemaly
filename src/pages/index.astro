@@ -3,6 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const experiences = [
 	{
+		date: 'Sept. 2026 – Present',
+		role: 'Technical Lead, AI Tutor Project',
+		organization: 'U of T Trustworthy Machine Intelligence',
+		description: "Leading a team of 8 students across three workstreams—LangGraph state engine, LoRA + vLLM training and inference, and Langfuse evaluation—to build an adaptive AI tutor that models each learner's knowledge state and dynamically adjusts support in real time."
+	},
+	{
 		date: 'May 2026 – Aug. 2026',
 		role: 'Agentic AI Research Engineer',
 		organization: 'University of Toronto',
@@ -236,7 +242,7 @@ const projects = [
 							) : (
 								<>
 									<div class="experience-meta-row">
-										<p class="experience-meta">{experience.organization} · {experience.location}</p>
+										<p class="experience-meta">{experience.organization}{experience.location && <> · {experience.location}</>}</p>
 										<p class="experience-date">{experience.date}</p>
 									</div>
 									<p>{experience.description}</p>
