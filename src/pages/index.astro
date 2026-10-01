@@ -65,6 +65,8 @@ const projects = [
 		href: 'https://github.com/jakemaly/mementos',
 		media: '/projects/mementos/mementos-screen-recording.mp4',
 		mediaType: 'video',
+		mediaPoster: '/projects/mementos/mementos-poster.jpg',
+		mediaClass: 'project-media--video',
 		mediaAlt: 'Mementos project screen recording'
 	},
 	{
@@ -162,7 +164,7 @@ const projects = [
 					<article class:list={['project-card', index === 0 && 'project-card--lead']} box-="square">
 						{project.media && (project.mediaType === 'video' ? (
 							<div class:list={['project-media', project.mediaClass]}>
-								<video controls preload="metadata" playsinline aria-label={project.mediaAlt}>
+								<video autoplay muted loop controls preload="metadata" playsinline poster={project.mediaPoster} aria-label={project.mediaAlt}>
 									<source src={project.media} type="video/mp4" />
 									Your browser does not support the Mementos project recording.
 								</video>

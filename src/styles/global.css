@@ -503,6 +503,10 @@
 		object-fit: cover;
 	}
 
+	.project-media--video {
+		aspect-ratio: 3420 / 2144;
+	}
+
 	.project-media img {
 		filter: saturate(0.8);
 		transition: filter 150ms ease;
