@@ -512,7 +512,7 @@
 		transition: filter 150ms ease;
 	}
 
-	.project-card:nth-child(2) .project-media img {
+	.project-card:nth-child(2) .project-media:not(.project-media--contain) img {
 		object-fit: cover;
 		padding: 0;
 	}
